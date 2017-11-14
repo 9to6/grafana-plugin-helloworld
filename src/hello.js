@@ -3,7 +3,7 @@ import {PanelCtrl} from 'app/plugins/sdk';
 export class HelloCtrl extends PanelCtrl {
   constructor($scope, $injector) {
     super($scope, $injector);
-    _.defaultsDeep(this.panel, panelDefaults);
+    // _.defaultsDeep(this.panel, panelDefaults);
 
     this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
     this.events.on('panel-teardown', this.onPanelTeardown.bind(this));

@@ -1,0 +1,21 @@
+{
+  "type": "panel",
+  "name": "HelloWorld",
+  "id": "grafana-plugin-hello-world",
+
+  "info": {
+    "description": "Hello world for grafana",
+    "author": {
+      "name": "9to5",
+      "url": "https://github.com/9to6"
+    },
+    "keywords": ["hello", "world", "panel"],
+    "version": "0.1.0",
+    "updated": "2017-11-14"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "4.x.x",
+    "plugins": [ ]
+  }
+}

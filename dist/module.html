@@ -1,3 +1,103 @@
-<div>
-	hello world
+<div ng-init="ctrl.app.name='test'">
+	<div class="dash-row">
+		<h1>{{ ctrl.panel.appName }}</h1>
+		<div class="gf-form">
+			<label class="gf-form-label width-8">App ID</label>
+			<input type="text" class="input-large gf-form-input width-16" ng-model="ctrl.app.app_id" ng-change="ctrl.render()" ng-model-onblur disabled>
+		</div>
+		<div class="gf-form">
+			<label class="gf-form-label width-8">Status</label>
+			<div ng-if="ctrl.app.status == 'UNMANAGED'">
+				<a class="btn btn-warning" ng-bind="ctrl.app.status"></a>
+			</div>
+			<div ng-if="ctrl.app.status != 'UNMANAGED'">
+				<a class="btn btn-success" ng-bind="ctrl.app.status"></a>
+			</div>
+		</div>
+		<div class="panels-wrapper">
+			<p ng-bind="ctrl.app.app_id" />
+		</div>
+		<div class="tabbed-view">
+      <div class="tabbed-view-header">
+        <h2 class="tabbed-view-title">
+          {{ctrl.pluginName}}
+        </h2>
+        <ul class="gf-tabs">
+          <li class="gf-tabs-item" ng-repeat="tab in ['test', 'abc']">
+            <a class="gf-tabs-link" ng-click="ctrl.changePanelTab($index)" ng-class="{active: ctrl.panelTabIndex === $index}">
+              {{::tab}}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="tabbed-view-body">
+				<div>
+					aaaa
+					{{ ctrl.panelTabIndex }}
+				</div>
+        <div ng-repeat="tab in ['test', 'abc']" ng-if="ctrl.panelTabIndex === $index">
+					<div>
+						TTTTSSS
+					</div>
+        </div>
+      </div>
+    </div>	
+		<p>
+		<p>
+	</div>
+	<div class="editor-row">
+		<div class="section gf-form-group" ng-if="ctrl.app.status != 'UNMANAGED'">
+			<h5 class="section-heading">Unmanaged Options</h5>
+			<div class="gf-form">
+				<label class="gf-form-label width-8">Deadline</label>
+				<span class="gf-form-select-wrapper width-16">
+					<input type="datetime-local" class="input-large gf-form-input" ng-model="ctrl.panel.countdownSettings.endCountdownTime" ng-change="ctrl.render()" ng-model-onblur>
+				</span>
+			</div>
+			<div class="gf-form">
+				<label class="gf-form-label width-8">End Text</label>
+				<input type="text" class="gf-form-input max-width-16" ng-model="ctrl.panel.countdownSettings.endText" ng-change="ctrl.render()" ng-model-onblur>
+			</div>
+			<div class="gf-form">
+				<label class="gf-form-label width-8">Font Size</label>
+				<input type="text" class="input-small gf-form-input max-width-16" ng-model="ctrl.panel.timeSettings.fontSize" ng-change="ctrl.render()" ng-model-onblur />
+			</div>
+			<div class="section gf-form-group">
+				<h5 class="section-heading">Zone list</h5>
+				<gf-form-switch class="gf-form" label="A" label-class="width-8" checked="ctrl.panel.dateSettings.showDate" on-change="ctrl.render()"></gf-form-switch>
+				<gf-form-switch class="gf-form" label="B" label-class="width-8" checked="ctrl.panel.dateSettings.showDate1" on-change="ctrl.render()"></gf-form-switch>
+				<gf-form-switch class="gf-form" label="C" label-class="width-8" checked="ctrl.panel.dateSettings.showDate2" on-change="ctrl.render()"></gf-form-switch>
+				<gf-form-switch class="gf-form" label="D" label-class="width-8" checked="ctrl.panel.dateSettings.showDate3" on-change="ctrl.render()"></gf-form-switch>
+			</div>
+		</div>
+		
+		<table class="table-panel-table">
+			<tr>
+				<th>{{ ctrl.panel.appName }}</th>
+				<th>
+					<div ng-if="ctrl.app.status == 'UNMANAGED'">
+						<a class="btn btn-warning" ng-bind="ctrl.app.status"></a>
+					</div>
+					<div ng-if="ctrl.app.status != 'UNMANAGED'">
+						<a class="btn btn-success" ng-bind="ctrl.app.status"></a>
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" class="gf-form-input" ng-model="ctrl.app.app_id" disabled >
+				</td>
+				<td>
+					<div class="gf-form">
+						<span class="gf-form-label width-8">Unit</span>
+						<div class="gf-form-dropdown-typeahead width-10"
+							ng-model="ctrl.panel.format"
+							dropdown-typeahead="ctrl.unitFormats"
+							dropdown-typeahead-on-select="ctrl.setUnitFormat($subItem)">
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>
